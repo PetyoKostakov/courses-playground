@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { ANIMALS } from '@frontendmasters/pet';
 
 import './search-params.scss';
+import useDropdown from '../use-dropdown/use-dropdown';
 
 /* eslint-disable-next-line */
 export interface SearchParamsProps {}
 
 export const SearchParams = (props: SearchParamsProps) => {
   const [location, setLocation] = useState('Seattle, WA');
-  const [animal, setAnimal] = useState('dog');
-  const [breed, setBreed] = useState('');
   const [breeds, setBreeds] = useState([]);
+  const [animal, AnimalDropdown] = useDropdown('Animal', 'dog', ANIMALS);
+  const [breed, BreedDropdown] = useDropdown('Breed', '', breeds);
 
   console.log('search-params.tsx');
   return (
@@ -20,24 +21,8 @@ export const SearchParams = (props: SearchParamsProps) => {
           Location
           <input id={'location'} type="text" value={location} placeholder={'Location'} onChange={ e => setLocation(e.target.value) }/>
         </label>
-        <label htmlFor="animal">
-          Animal
-          <select id="animal" value={ animal } onChange={  e => setAnimal(e.target.value)}>
-            <option>All</option>
-            { ANIMALS.map(animal => (
-              <option key={ animal } value={ animal }>{ animal }</option>
-            ))}
-          </select>
-        </label>
-        <label htmlFor="breed">
-          Breed
-          <select id="breed" value={ breed } onChange={ e => setBreed(e.target.value) } disabled={ !breeds.length }>
-            <option value="">All</option>
-            { breeds.map(breedStr => (
-              <option key={ breedStr } value={ breedStr }>{ breedStr }</option>
-            ))}
-          </select>
-        </label>
+        <AnimalDropdown/>
+        <BreedDropdown/>
         <button type="submit">Submit</button>
       </form>
     </div>
