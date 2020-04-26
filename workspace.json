@@ -1,0 +1,180 @@
+{
+  "version": 1,
+  "projects": {
+    "complete-react-v5": {
+      "root": "apps/complete-react-v5",
+      "sourceRoot": "apps/complete-react-v5/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "options": {
+            "outputPath": "dist/apps/complete-react-v5",
+            "index": "apps/complete-react-v5/src/index.html",
+            "main": "apps/complete-react-v5/src/main.tsx",
+            "polyfills": "apps/complete-react-v5/src/polyfills.ts",
+            "tsConfig": "apps/complete-react-v5/tsconfig.app.json",
+            "assets": [
+              "apps/complete-react-v5/src/favicon.ico",
+              "apps/complete-react-v5/src/assets"
+            ],
+            "styles": ["apps/complete-react-v5/src/styles.scss"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/complete-react-v5/src/environments/environment.ts",
+                  "with": "apps/complete-react-v5/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "complete-react-v5:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "complete-react-v5:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/complete-react-v5/.eslintrc",
+            "tsConfig": [
+              "apps/complete-react-v5/tsconfig.app.json",
+              "apps/complete-react-v5/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/complete-react-v5/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/complete-react-v5/jest.config.js",
+            "tsConfig": "apps/complete-react-v5/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "complete-react-v5-e2e": {
+      "root": "apps/complete-react-v5-e2e",
+      "sourceRoot": "apps/complete-react-v5-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/complete-react-v5-e2e/cypress.json",
+            "tsConfig": "apps/complete-react-v5-e2e/tsconfig.e2e.json",
+            "devServerTarget": "complete-react-v5:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "complete-react-v5:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/complete-react-v5-e2e/.eslintrc",
+            "tsConfig": ["apps/complete-react-v5-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/complete-react-v5-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/react": {
+      "application": {
+        "style": "scss",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "scss"
+      },
+      "library": {
+        "style": "scss",
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/web": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nx-plugin": {
+      "plugin": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "complete-react-v5"
+}
