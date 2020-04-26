@@ -51,7 +51,8 @@
         "serve": {
           "builder": "@nrwl/web:dev-server",
           "options": {
-            "buildTarget": "complete-react-v5:build"
+            "buildTarget": "complete-react-v5:build",
+            "proxyConfig": "apps/complete-react-v5/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -106,6 +107,63 @@
             "config": "apps/complete-react-v5-e2e/.eslintrc",
             "tsConfig": ["apps/complete-react-v5-e2e/tsconfig.e2e.json"],
             "exclude": ["**/node_modules/**", "!apps/complete-react-v5-e2e/**"]
+          }
+        }
+      }
+    },
+    "complete-react-v5-api": {
+      "root": "apps/complete-react-v5-api",
+      "sourceRoot": "apps/complete-react-v5-api/src",
+      "projectType": "application",
+      "prefix": "complete-react-v5-api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/complete-react-v5-api",
+            "main": "apps/complete-react-v5-api/src/main.ts",
+            "tsConfig": "apps/complete-react-v5-api/tsconfig.app.json",
+            "assets": ["apps/complete-react-v5-api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/complete-react-v5-api/src/environments/environment.ts",
+                  "with": "apps/complete-react-v5-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "complete-react-v5-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/complete-react-v5-api/.eslintrc",
+            "tsConfig": [
+              "apps/complete-react-v5-api/tsconfig.app.json",
+              "apps/complete-react-v5-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/complete-react-v5-api/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/complete-react-v5-api/jest.config.js",
+            "tsConfig": "apps/complete-react-v5-api/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }

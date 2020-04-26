@@ -25,6 +25,9 @@
     "complete-react-v5-e2e": {
       "tags": [],
       "implicitDependencies": ["complete-react-v5"]
+    },
+    "complete-react-v5-api": {
+      "tags": []
     }
   }
 }
