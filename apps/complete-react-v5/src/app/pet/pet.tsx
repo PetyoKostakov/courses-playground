@@ -10,6 +10,7 @@ export interface PetProps {
 }
 
 export const Pet = (props: PetProps) => {
+  console.log('pet.tsx');
   return (
     <div>
       <h1>{ props.name }</h1>
