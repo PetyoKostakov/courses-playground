@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ANIMALS } from '@frontendmasters/pet';
+import React, { useEffect, useState } from 'react';
+import pet, { ANIMALS } from '@frontendmasters/pet';
 
 import './search-params.scss';
 import useDropdown from '../use-dropdown/use-dropdown';
@@ -11,7 +11,18 @@ export const SearchParams = (props: SearchParamsProps) => {
   const [location, setLocation] = useState('Seattle, WA');
   const [breeds, setBreeds] = useState([]);
   const [animal, AnimalDropdown] = useDropdown('Animal', 'dog', ANIMALS);
-  const [breed, BreedDropdown] = useDropdown('Breed', '', breeds);
+  const [breed, BreedDropdown, setBreed] = useDropdown('Breed', '', breeds);
+
+  useEffect(() => {
+    setBreeds([]);
+    setBreed('');
+
+    fetch('/api/breed?animal=' + animal)
+      .then(res => res.json())
+      .then((breedsResponse: any) => {
+        setBreeds(breedsResponse)
+      });
+  }, [animal, setBreed, setBreeds]);
 
   console.log('search-params.tsx');
   return (
