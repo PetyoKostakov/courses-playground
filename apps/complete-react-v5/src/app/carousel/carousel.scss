@@ -1,0 +1,13 @@
+.carousel {
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-smaller {
+  flex-direction: row;
+}
+
+.carousel-smaller > img {
+  width: 100px;
+  height: 100px;
+}

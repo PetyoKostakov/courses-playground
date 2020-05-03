@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './details.scss';
+import Carousel from '../carousel/carousel';
 
 /* eslint-disable-next-line */
 export interface DetailsProps {
@@ -14,7 +15,8 @@ export interface DetailsState {
 
 class Details extends React.Component<DetailsProps, any> {
   state: any = {
-    loading: true
+    loading: true,
+    photos: ['/assets/img/1.jpeg', '/assets/img/2.jpg', '/assets/img/3.jpg']
   };
 
   constructor(props) {
@@ -40,10 +42,11 @@ class Details extends React.Component<DetailsProps, any> {
         <h1>Loading...</h1>
       )
     } else {
-      const { name, id, location, animal, breed } = this.state;
+      const { name, id, location, animal, breed, photos } = this.state;
 
       return (
         <div>
+          <Carousel photos={ photos }/>
           <h1>{ name }</h1>
           <h1>{ id }</h1>
           <h1>{ location }</h1>
