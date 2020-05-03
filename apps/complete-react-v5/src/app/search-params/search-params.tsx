@@ -6,7 +6,9 @@ import useDropdown from '../use-dropdown/use-dropdown';
 import Results from '../results/results';
 
 /* eslint-disable-next-line */
-export interface SearchParamsProps {}
+export interface SearchParamsProps {
+  path: any;
+}
 
 export const SearchParams = (props: SearchParamsProps) => {
   const [location, setLocation] = useState('Seattle, WA');

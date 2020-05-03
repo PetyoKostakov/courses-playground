@@ -1,12 +1,15 @@
 import React from 'react';
 
 import './pet.scss';
+import { RouteComponentProps } from '@reach/router';
 
 /* eslint-disable-next-line */
-export interface PetProps {
+export interface PetProps extends  RouteComponentProps {
   name: string;
   animal: string;
   breed: string;
+
+  to: string;
 }
 
 export const Pet = (props: PetProps) => {
