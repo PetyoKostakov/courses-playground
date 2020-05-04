@@ -2,6 +2,7 @@ import React from 'react';
 
 import './details.scss';
 import Carousel from '../carousel/carousel';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
 /* eslint-disable-next-line */
 export interface DetailsProps {
@@ -59,4 +60,11 @@ class Details extends React.Component<DetailsProps, any> {
   }
 }
 
-export default Details;
+export default function DetailsWithErrorBoundary(props) {
+  return (
+    <ErrorBoundary>
+      <Details {...props} />
+    </ErrorBoundary>
+  )
+};
+
