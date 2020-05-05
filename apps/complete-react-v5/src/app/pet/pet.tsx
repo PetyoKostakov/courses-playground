@@ -8,8 +8,6 @@ export interface PetProps extends  RouteComponentProps {
   name: string;
   animal: string;
   breed: string;
-
-  to: string;
 }
 
 export const Pet = (props: PetProps) => {

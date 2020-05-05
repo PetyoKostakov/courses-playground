@@ -3,6 +3,7 @@ import React from 'react';
 import './details.scss';
 import Carousel from '../carousel/carousel';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import ThemeContext from '../ThemeContext/ThemeContext';
 
 /* eslint-disable-next-line */
 export interface DetailsProps {
@@ -48,12 +49,18 @@ class Details extends React.Component<DetailsProps, any> {
       return (
         <div>
           <Carousel photos={ photos }/>
+
+
           <h1>{ name }</h1>
           <h1>{ id }</h1>
           <h1>{ location }</h1>
           <h1>{ animal }</h1>
           <h1>{ breed }</h1>
-          <button>Adopt { name }</button>
+          <ThemeContext.Consumer>
+            {([theme]) => (
+                <button style={ {backgroundColor: theme} }>Adopt { name }</button>
+            )}
+          </ThemeContext.Consumer>
         </div>
       )
     }

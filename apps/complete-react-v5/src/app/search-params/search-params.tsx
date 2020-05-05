@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import pet, { ANIMALS } from '@frontendmasters/pet';
 
 import './search-params.scss';
 import useDropdown from '../use-dropdown/use-dropdown';
 import Results from '../results/results';
+import ThemeContext from '../ThemeContext/ThemeContext';
 
 /* eslint-disable-next-line */
 export interface SearchParamsProps {
@@ -16,6 +17,7 @@ export const SearchParams = (props: SearchParamsProps) => {
   const [animal, AnimalDropdown] = useDropdown('Animal', 'dog', ANIMALS);
   const [breed, BreedDropdown, setBreed] = useDropdown('Breed', '', breeds);
   const [pets, setPets] = useState([]);
+  const [theme, setTheme] = useContext(ThemeContext);
 
   async function requestPets() {
     const petsResponse = await fetch(`/api/pet?location=${location}&animal=${animal}&breed=${breed}`);
@@ -48,7 +50,16 @@ export const SearchParams = (props: SearchParamsProps) => {
         </label>
         <AnimalDropdown/>
         <BreedDropdown/>
-        <button type="submit">Submit</button>
+        <label htmlFor={'theme'}>
+          <select id={'theme'} value={theme} onChange={e => setTheme(e.target.value)}>
+            <option value="blue">blue</option>
+            <option value="yellow">yellow</option>
+            <option value="pink">pink</option>
+            <option value="skyblue">sky-blue</option>
+            <option value="peru">peru</option>
+          </select>
+        </label>
+        <button type="submit" style={ { backgroundColor: theme }}>Submit</button>
       </form>
       <Results pets={ pets }/>
     </div>

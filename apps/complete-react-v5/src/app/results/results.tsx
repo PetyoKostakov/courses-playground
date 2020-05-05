@@ -2,6 +2,7 @@ import React from 'react';
 
 import './results.scss';
 import Pet, { PetProps } from '../pet/pet';
+import { Link } from '@reach/router';
 
 export interface Pet extends  PetProps {
   id: number;
@@ -17,7 +18,9 @@ export const Results = (props: ResultsProps) => {
     <div>
       { !props.pets.length ? (<h1>No Pets found</h1>) : null }
       { props.pets.map(pet => (
-        <Pet to={`/details/${ pet.id }`} key={pet.name + pet.breed} name={pet.name} animal={pet.animal} breed={pet.breed}/>
+        <Link to={`/details/${ pet.id }` } key={pet.name + pet.breed}>
+          <Pet name={pet.name} animal={pet.animal} breed={pet.breed}/>
+        </Link>
       ))}
     </div>
   );
