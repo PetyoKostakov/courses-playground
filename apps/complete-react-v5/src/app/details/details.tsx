@@ -4,6 +4,7 @@ import './details.scss';
 import Carousel from '../carousel/carousel';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import ThemeContext from '../ThemeContext/ThemeContext';
+import Modal from '../modal/modal';
 
 /* eslint-disable-next-line */
 export interface DetailsProps {
@@ -18,7 +19,8 @@ export interface DetailsState {
 class Details extends React.Component<DetailsProps, any> {
   state: any = {
     loading: true,
-    photos: ['/assets/img/1.jpeg', '/assets/img/2.jpg', '/assets/img/3.jpg']
+    photos: ['/assets/img/1.jpeg', '/assets/img/2.jpg', '/assets/img/3.jpg'],
+    showModal: false
   };
 
   constructor(props) {
@@ -38,13 +40,22 @@ class Details extends React.Component<DetailsProps, any> {
       }));
   }
 
+  toggleModal = () => {
+    this.setState({ showModal: !this.state.showModal})
+  };
+
+  adopt = () => {
+    console.log('Adopt');
+    this.toggleModal();
+  };
+
   render() {
     if(this.state.loading) {
       return (
         <h1>Loading...</h1>
       )
     } else {
-      const { name, id, location, animal, breed, photos } = this.state;
+      const { name, id, location, animal, breed, photos, showModal } = this.state;
 
       return (
         <div>
@@ -58,9 +69,20 @@ class Details extends React.Component<DetailsProps, any> {
           <h1>{ breed }</h1>
           <ThemeContext.Consumer>
             {([theme]) => (
-                <button style={ {backgroundColor: theme} }>Adopt { name }</button>
+              <button style={ {backgroundColor: theme} } onClick={ this.toggleModal }>Adopt { name }</button>
             )}
           </ThemeContext.Consumer>
+          {
+            showModal ? (
+              <Modal>
+                <h1>Would you like to adopt { name }</h1>
+                <div className="buttons">
+                  <button onClick={ this.adopt }>Yes</button>
+                  <button onClick={ this.toggleModal }>No, I'm a monster</button>
+                </div>
+              </Modal>
+            ) : null
+          }
         </div>
       )
     }
