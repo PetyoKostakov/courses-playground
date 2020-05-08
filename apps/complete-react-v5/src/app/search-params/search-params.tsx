@@ -35,7 +35,7 @@ export const SearchParams = (props: SearchParamsProps) => {
       .then((breedsResponse: any) => {
         setBreeds(breedsResponse)
       });
-  }, [animal, setBreed, setBreeds]);
+  }, [animal]);
 
   console.log('search-params.tsx');
   return (
