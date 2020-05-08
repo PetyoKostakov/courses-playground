@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { lazy } from 'react';
 
 import './details.scss';
 import Carousel from '../carousel/carousel';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import ThemeContext from '../ThemeContext/ThemeContext';
-import Modal from '../modal/modal';
+
+const Modal = lazy(() => import('../modal/modal'));
 
 /* eslint-disable-next-line */
 export interface DetailsProps {
