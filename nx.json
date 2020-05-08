@@ -28,6 +28,13 @@
     },
     "complete-react-v5-api": {
       "tags": []
+    },
+    "sass-fundamentals": {
+      "tags": []
+    },
+    "sass-fundamentals-e2e": {
+      "tags": [],
+      "implicitDependencies": ["sass-fundamentals"]
     }
   }
 }

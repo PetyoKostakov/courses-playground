@@ -167,6 +167,115 @@
           }
         }
       }
+    },
+    "sass-fundamentals": {
+      "root": "apps/sass-fundamentals",
+      "sourceRoot": "apps/sass-fundamentals/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "options": {
+            "outputPath": "dist/apps/sass-fundamentals",
+            "index": "apps/sass-fundamentals/src/index.html",
+            "main": "apps/sass-fundamentals/src/main.tsx",
+            "polyfills": "apps/sass-fundamentals/src/polyfills.ts",
+            "tsConfig": "apps/sass-fundamentals/tsconfig.app.json",
+            "assets": [
+              "apps/sass-fundamentals/src/favicon.ico",
+              "apps/sass-fundamentals/src/assets"
+            ],
+            "styles": ["apps/sass-fundamentals/src/styles.scss"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/sass-fundamentals/src/environments/environment.ts",
+                  "with": "apps/sass-fundamentals/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "sass-fundamentals:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "sass-fundamentals:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/sass-fundamentals/.eslintrc",
+            "tsConfig": [
+              "apps/sass-fundamentals/tsconfig.app.json",
+              "apps/sass-fundamentals/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/sass-fundamentals/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/sass-fundamentals/jest.config.js",
+            "tsConfig": "apps/sass-fundamentals/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "sass-fundamentals-e2e": {
+      "root": "apps/sass-fundamentals-e2e",
+      "sourceRoot": "apps/sass-fundamentals-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/sass-fundamentals-e2e/cypress.json",
+            "tsConfig": "apps/sass-fundamentals-e2e/tsconfig.e2e.json",
+            "devServerTarget": "sass-fundamentals:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "sass-fundamentals:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/sass-fundamentals-e2e/.eslintrc",
+            "tsConfig": ["apps/sass-fundamentals-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/sass-fundamentals-e2e/**"]
+          }
+        }
+      }
     }
   },
   "cli": {
