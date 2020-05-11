@@ -1,0 +1,21 @@
+@import './_variables.scss';
+
+.btn {
+  padding: 2px 10px;
+  border: 1px solid $venus;
+  border-radius: 2px;
+
+  &:disabled {
+    opacity: $btn-disabled-opacity;
+  }
+
+  &.btn-primary {
+    color: $white;
+    background-color: $hopbush;
+  }
+
+  &.btn-secondary {
+    color: $black;
+    background-color: $nebula;
+  }
+}
