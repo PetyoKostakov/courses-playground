@@ -5,6 +5,7 @@ import Nesting from './nesting/nesting';
 import Parent from './parent/parent';
 import { Router } from '@reach/router';
 import Variables from './variables/variables';
+import Mixins from './mixins/mixins';
 
 export const App = () => {
 
@@ -14,6 +15,7 @@ export const App = () => {
         <Parent path={'/parent'}/>
         <Nesting path={'/nesting'}/>
         <Variables path={'/variables'}/>
+        <Mixins path={'/mixins'}/>
       </Router>
     </div>
   );

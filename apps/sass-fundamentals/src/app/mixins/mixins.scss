@@ -1,0 +1,37 @@
+@import './_mixins.scss';
+
+.btn {
+  padding: 2px 10px;
+  border-radius: 2px;
+
+  &.btn-yellow {
+    @include button-color(yellow);
+  }
+
+  &.btn-blue {
+    @include button-color(blue);
+  }
+
+  &.btn-green {
+    @include button-color(green);
+  }
+
+  &.btn-purple {
+    @include button-color(purple);
+  }
+
+  &.btn-pink {
+    @include button-color(pink);
+  }
+
+  &.btn-orange {
+    @include button-color(orange);
+  }
+
+  &.btn-brown {
+    @include button-color(brown);
+  }
+}
+
+
+
