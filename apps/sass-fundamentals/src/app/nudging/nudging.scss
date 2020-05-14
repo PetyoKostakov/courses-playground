@@ -1,0 +1,44 @@
+$margin-list: 5, 10, 15, 25;
+$position-list-map: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left
+);
+
+@each $margin in $margin-list {
+  @each $position-short, $position-long in $position-list-map {
+    .m-#{$position-short}-#{$margin} {
+      margin-#{$position-long}: $margin;
+    }
+  }
+}
+
+.test-map-get {
+  margin-#{map-get($position-list-map, "t")}: 15px;
+}
+
+//@each $margin in $margin-list {
+//  .m-t-#{$margin} {
+//    margin-top: $margin;
+//  }
+//
+//  .m-r-#{$margin} {
+//    margin-right: $margin;
+//  }
+//
+//  .m-b-#{$margin} {
+//    margin-bottom: $margin;
+//  }
+//
+//  .m-l-#{$margin} {
+//    margin-left: $margin;
+//  }
+//}
+
+//@for $i from 1 through 5 {
+//  $size: $i * 5;
+//
+//
+//
+//}
