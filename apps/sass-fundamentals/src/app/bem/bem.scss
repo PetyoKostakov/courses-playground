@@ -1,0 +1,42 @@
+$hopbush: #c69 !default;
+$patina: #699 !default;
+$venus: #998099 !default;
+$nebula: #d2e1dd !default;
+
+$price: #080;
+$price-disabled: #aaa;
+
+$black: #000 !default;
+$white: #fff !default;
+
+$btn-disabled-opacity: 0.5 !default;
+
+.btn {
+  padding: 2px 10px;
+  border: 0;
+  border-radius: 2px;
+
+  &:disabled {
+    opacity: $btn-disabled-opacity;
+
+    & .btn__price {
+      background-color: $price-disabled;
+    }
+  }
+
+  &.btn--mode-primary {
+    color: $white;
+    background-color: $hopbush;
+  }
+
+  &.btn--mode-secondary {
+    color: $black;
+    background-color: $venus;
+  }
+
+  &__price {
+    padding: 1px 3px;
+    color: $white;
+    background-color: $price;
+  }
+}

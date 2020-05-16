@@ -7,6 +7,7 @@ import { Router } from '@reach/router';
 import Variables from './variables/variables';
 import Mixins from './mixins/mixins';
 import Nudging from './nudging/nudging';
+import Bem from './bem/bem';
 
 export const App = () => {
 
@@ -18,6 +19,7 @@ export const App = () => {
         <Variables path={'/variables'}/>
         <Mixins path={'/mixins'}/>
         <Nudging path={'/nudging'}/>
+        <Bem path={'/bem'}/>
       </Router>
     </div>
   );
