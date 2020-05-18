@@ -8,7 +8,7 @@ export interface BemProps extends RouteComponentProps {}
 
 export const Bem = (props: BemProps) => {
   return (
-    <div>
+    <div className={'bem'}>
       <h1>BEM Buttons</h1>
       <p>
         <button className='btn btn--mode-primary'>

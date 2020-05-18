@@ -7,7 +7,7 @@ export interface VariablesProps {}
 
 export const Variables = (props: any) => {
   return (
-    <div>
+    <div className={'variables'}>
       <h1>Beautiful Buttons</h1>
       <p>
         <button className='btn btn-primary'>Click Me!</button>

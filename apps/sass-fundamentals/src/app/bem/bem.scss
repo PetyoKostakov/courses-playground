@@ -11,32 +11,35 @@ $white: #fff !default;
 
 $btn-disabled-opacity: 0.5 !default;
 
-.btn {
-  padding: 2px 10px;
-  border: 0;
-  border-radius: 2px;
+.bem {
+  .btn {
+    padding: 2px 10px;
+    border: 0;
+    border-radius: 2px;
 
-  &:disabled {
-    opacity: $btn-disabled-opacity;
+    &:disabled {
+      opacity: $btn-disabled-opacity;
 
-    & .btn__price {
-      background-color: $price-disabled;
+      & .btn__price {
+        background-color: $price-disabled;
+      }
+    }
+
+    &.btn--mode-primary {
+      color: $white;
+      background-color: $hopbush;
+    }
+
+    &.btn--mode-secondary {
+      color: $black;
+      background-color: $venus;
+    }
+
+    &__price {
+      padding: 1px 3px;
+      color: $white;
+      background-color: $price;
     }
   }
-
-  &.btn--mode-primary {
-    color: $white;
-    background-color: $hopbush;
-  }
-
-  &.btn--mode-secondary {
-    color: $black;
-    background-color: $venus;
-  }
-
-  &__price {
-    padding: 1px 3px;
-    color: $white;
-    background-color: $price;
-  }
 }
+

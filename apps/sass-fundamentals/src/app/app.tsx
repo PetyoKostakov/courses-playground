@@ -8,6 +8,7 @@ import Variables from './variables/variables';
 import Mixins from './mixins/mixins';
 import Nudging from './nudging/nudging';
 import Bem from './bem/bem';
+import Functions from './functions/functions';
 
 export const App = () => {
 
@@ -20,6 +21,7 @@ export const App = () => {
         <Mixins path={'/mixins'}/>
         <Nudging path={'/nudging'}/>
         <Bem path={'/bem'}/>
+        <Functions path={'func'}/>
       </Router>
     </div>
   );

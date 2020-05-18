@@ -7,7 +7,7 @@ export interface MixinsProps {}
 
 export const Mixins = (props: any) => {
   return (
-    <div>
+    <div className={'mixins'}>
       <h1>Mixins</h1>
 
       <p>

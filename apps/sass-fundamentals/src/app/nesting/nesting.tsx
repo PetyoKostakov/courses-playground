@@ -7,7 +7,7 @@ export interface NestingProps {}
 
 export const Nesting = (props: any) => {
   return (
-    <div>
+    <div className={'nesting'}>
       <h1>Beautiful Buttons</h1>
       <p>
         <button className='btn btn-primary'>Click Me!</button>
